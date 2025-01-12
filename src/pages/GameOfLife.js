@@ -1,9 +1,9 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import {produce} from 'immer';
-import {Grid} from "../../features";
-import {fetchCreateEmptyGrid, fetchInteractGrid, fetchMutateGrid, fetchRandomizeGrid} from "../../services";
-import {Menu} from "../../widgets";
-import {NUM_COLS, NUM_ROWS} from "../../const";
+import React, {useCallback, useEffect, useRef, useState} from "react";
+import {fetchCreateEmptyGrid, fetchInteractGrid, fetchMutateGrid, fetchRandomizeGrid} from "../services";
+import {NUM_COLS, NUM_ROWS, SPEED_MS} from "../const";
+import {produce} from "immer";
+import {Menu} from "../widgets";
+import {Grid} from "../features";
 
 export const GameOfLife = () => {
   const [grid, setGrid] = useState(null);
@@ -31,7 +31,7 @@ export const GameOfLife = () => {
       });
     });
 
-    setTimeout(runAnimationCallback, 100);
+    setTimeout(runAnimationCallback, SPEED_MS);
   }, []);
 
   const clearHandler = () => {

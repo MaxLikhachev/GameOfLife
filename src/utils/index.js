@@ -1,6 +1,8 @@
+import {CELL_PARAMS, NUM_COLS, NUM_ROWS} from "../const";
+
 export const getMutatedValue = ({row, col, grid}) => {
-  const rowsRange = [0, grid?.length ?? 0];
-  const colsRange = [0, grid[0]?.length ?? 0];
+  const rowsRange = [0, NUM_ROWS ?? 0];
+  const colsRange = [0, NUM_COLS ?? 0];
 
   const getNeighborsOperations = () => {
 
@@ -28,3 +30,8 @@ export const getRandomValue = () => Math.random() > 0.7 ? 1 : 0
 export const getInteractedValue = (value) => !value ? 1 : 0
 
 export const getCoordinate = ({value, size, padding = 0}) => value * (size + padding * 2)
+
+export const getGridSize = () => ({
+  width: getCoordinate({value: 1, size: CELL_PARAMS.height, padding: CELL_PARAMS.padding}) * NUM_COLS,
+  height: getCoordinate({value: 1, size: CELL_PARAMS.width, padding: CELL_PARAMS.padding}) * NUM_ROWS,
+})
